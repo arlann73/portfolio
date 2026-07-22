@@ -28,7 +28,11 @@ jobs:
       - name: Run ESLint (JavaScript)
         run: |
           if git ls-files '*.js' | grep -q .; then
-            npx eslint --ext .js .
+            echo "=== ESLint: Start ==="
+            npx eslint --ext .js . 2>&1 | tee eslint-output.txt
+            rc=${PIPESTATUS[0]}
+            echo "=== ESLint: Exit code $rc ==="
+            exit $rc
           else
             echo "No JS files found; skipping ESLint."
           fi
@@ -36,7 +40,11 @@ jobs:
       - name: Run Stylelint (CSS)
         run: |
           if git ls-files '*.css' | grep -q .; then
-            npx stylelint "**/*.css"
+            echo "=== Stylelint: Start ==="
+            npx stylelint "**/*.css" 2>&1 | tee stylelint-output.txt
+            rc=${PIPESTATUS[0]}
+            echo "=== Stylelint: Exit code $rc ==="
+            exit $rc
           else
             echo "No CSS files found; skipping Stylelint."
           fi
@@ -44,7 +52,11 @@ jobs:
       - name: Run HTML validation
         run: |
           if git ls-files '*.html' | grep -q .; then
-            npx html-validate "**/*.html"
+            echo "=== html-validate: Start ==="
+            npx html-validate "**/*.html" 2>&1 | tee htmlvalidate-output.txt
+            rc=${PIPESTATUS[0]}
+            echo "=== html-validate: Exit code $rc ==="
+            exit $rc
           else
             echo "No HTML files found; skipping HTML validation."
           fi
