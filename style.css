@@ -479,17 +479,35 @@
         /* --- HERO --- */
         #hero {
             position: relative;
-            min-height: 100vh;
+            width: 100%;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            align-items: center;
             overflow: hidden;
-            padding-top: 80px;
+            padding: 0;
+            margin: 0;
+            background: radial-gradient(ellipse at 50% 40%, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
         }
-        #hero-canvas {
+        #hero::before {
+            content: '';
             position: absolute;
             inset: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(6, 182, 212, 0.08) 0%, transparent 50%);
+            z-index: 1;
+            pointer-events: none;
+        }
+        #hero-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
             z-index: 0;
+            filter: drop-shadow(0 0 40px rgba(59, 130, 246, 0.1));
         }
         .hero-inner {
             position: relative;
@@ -1816,6 +1834,13 @@
             align-items: center;
             justify-content: center;
             background: radial-gradient(circle at 30% 30%, rgba(59, 130, 246, 0.15), rgba(2, 6, 23, 0.7));
+        }
+        .about-photo-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
         }
         .about-initials {
             font-family: var(--font-display);
