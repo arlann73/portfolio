@@ -1912,7 +1912,7 @@
             0%, 100% { opacity: 0.6; }
             50% { opacity: 1; }
         }
-        /* Fullâ€‘width text block below the twoâ€‘column layout */
+        /* Full-width text block below the two-column layout */
         .about-full {
             margin-top: 40px;
         }
