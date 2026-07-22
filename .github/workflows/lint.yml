@@ -1,0 +1,42 @@
+name: Lint
+
+on:
+  push:
+    branches: ['main', 'master']
+  pull_request:
+    branches: ['main', 'master']
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Run ESLint (JavaScript)
+        run: |
+          if git ls-files '*.js' | grep -q .; then
+            npx eslint --ext .js .
+          else
+            echo "No JS files found; skipping ESLint."
+          fi
+
+      - name: Run Stylelint (CSS)
+        run: |
+          if git ls-files '*.css' | grep -q .; then
+            npx stylelint "**/*.css"
+          else
+            echo "No CSS files found; skipping Stylelint."
+          fi
+
+      - name: Run HTML validation
+        run: |
+          if git ls-files '*.html' | grep -q .; then
+            npx html-validate "**/*.html"
+          else
+            echo "No HTML files found; skipping HTML validation."
+          fi
