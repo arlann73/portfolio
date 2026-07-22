@@ -1,6 +1,8 @@
 {
   "extends": ["html-validate:recommended"],
   "rules": {
-    "alt-require": "error"
+    "alt-require": "error",
+    "doctype-first": "warn",
+    "head-req-title": "warn"
   }
 }

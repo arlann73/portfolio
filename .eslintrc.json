@@ -5,11 +5,15 @@
   },
   "extends": "eslint:recommended",
   "parserOptions": {
-    "ecmaVersion": "latest",
+    "ecmaVersion": 12,
     "sourceType": "module"
   },
   "rules": {
     "no-unused-vars": ["warn", { "args": "none", "ignoreRestSiblings": true }],
-    "no-console": "off"
+    "no-console": "off",
+    "no-undef": "error",
+    "quotes": ["warn", "single", { "avoidEscape": true }],
+    "semi": ["warn", "always"],
+    "indent": ["warn", 2]
   }
 }
