@@ -9,6 +9,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <!-- Three.js Import Map for the terrain animation -->
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+            }
+        }
+    </script>
 </head>
 <body>
     <div id="loader">
@@ -43,6 +52,7 @@
         <div class="nav-backdrop" id="nav-backdrop"></div>
 
         <section id="hero">
+            <!-- Canvas where the geological terrain will render -->
             <canvas id="hero-canvas"></canvas>
             <div class="wrap hero-inner">
                 <h1 class="hero-title" id="hero-title">
@@ -200,7 +210,7 @@
                         </a>
                     </div>
 
-                    <form class="contact-form reveal" id="contact-form" novalidate>
+                    <form class="contact-form" id="contact-form" novalidate>
                         <div class="form-row two">
                             <div class="form-field">
                                 <label for="cf-name">Name</label>
@@ -264,6 +274,6 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>
